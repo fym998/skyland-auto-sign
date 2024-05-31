@@ -32,7 +32,7 @@
 
 ## 方法1
 
-1.先装python3.6>=x<3.9,且安装requests库.cmd 运行`pip install requests`
+1.先装python`3.6>=x<3.9`,且安装requests库.cmd 运行`pip install requests`
 
 2.下载脚本`skyland.py`
 
