@@ -1,5 +1,7 @@
 # skyland-auto-sign
 
+[fork自这名大佬](https://gitee.com/FancyCabbage/skyland-auto-sign)
+
 明日方舟森空岛一键签到脚本，基于python
 
 有三种方法部署
