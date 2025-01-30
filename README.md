@@ -1,7 +1,5 @@
 # skyland-auto-sign
 
-[fork自这名大佬](https://gitee.com/FancyCabbage/skyland-auto-sign)
-
 明日方舟森空岛一键签到脚本，基于python
 
 有三种方法部署
@@ -19,12 +17,13 @@
 - [在自己电脑上运行](#mode1)
     - [配合MAA运行](#maa)
 - [在云函数上运行](#mode2)
-  -- [使用手机进行操作](#mobile)
+  - [使用手机进行操作](#mobile)
 - [使用Github Actions托管](#mode3)
 - [使用家用NAS](#mode4)
 - [多账号支持](#multiple_account)
 - [多端登录问题](#multiple_login)
-- [有关新版本参数验证](#sign-header)
+- [有关新版本参数验证](#sign-headers)
+- [有关新版本获得Cred必传的dId参数](#dId)
 
 [视频用法]( https://www.bilibili.com/video/BV1DP411h7s6)
 
@@ -32,7 +31,7 @@
 
 ## 方法1
 
-1.先装python`3.6>=x<3.9`,且安装requests库.cmd 运行`pip install requests`
+1.先装python（3.6及以上）且安装requests库.cmd 运行`pip install requests`
 
 2.下载脚本`skyland.py`
 
@@ -58,6 +57,7 @@
 
 最后再次启动的时候，脚本就不会再询问你是否添加账号了，而是直接帮你签到了
 
+1.3版本在脚本路径下多了一个`添加账号.bat`,双击运行会再次出现登陆界面，按照步骤走可以再次添加一个账号
 <a name="maa"></a>
 
 ### MAA支持
@@ -96,7 +96,7 @@ TOKEN和日志应该都会被存储在MAA根路径下
 4.完成后点击右上角的'创建函数'按钮
 ![img_8.png](assets/img_8.png)
 
-5.进入选择运行时环境为`Python 3.10`， 并填一下脚本名称（随便填）。其它设置不用动
+5.进入选择运行时环境为`定制运行时`， 并填一下脚本名称（随便填）。其它设置不用动
 ![img_9.png](assets/img_9.png)
 
 6.进来后是这样的界面，点击右上角上传自zip文件（或者你在左边的编辑器里自己把文件一个个创建好复制粘贴进去也行）
@@ -244,3 +244,10 @@ TOKEN和日志应该都会被存储在MAA根路径下
 'dId': 'de9759a5afaa634f',
 'platform': '1'
 ```
+
+<a name="dId"></a>
+## 有关新版本获得Cred必传的dId参数
+
+2024.9.10 森空岛登入接口引入了数美接口，请求头必须传递dId参数，导致无法正常登陆
+
+现已解决，具体实现看`SecuritySm.py`文件
